@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
-# ==============================================================================
-# Projeto          : Projeto Linux KDu (Index Data)
-# Aplicação        : KDu9-LifeSaver_UI
-# Versão           : v2.2 (ESTÁVEL: Sincronia Sob Demanda do Usuário para o View)
-# ==============================================================================
-
+# ==========================================================================
+# Projeto          : Linux KDu9-Ion-Final (Index Data)
+# Script           : KDu9-LifeSaver_UI-v2.2.sh
+# Origem histórica : KDu9 — "Projeto          : Projeto Linux KDu (Index Data)"
+# Atualizado em    : 17/08/2026 — Cabeçalho padronizado ao padrão KDu9 atual
+# Desenvolvedores  : Index Data — www.indexdata.com.br
+# Identidade       : Royal Blue (#4169E1) | Terminal: xterm (Oficial KDu)
+# ==========================================================================
 if ! command -v yad &> /dev/null; then
     echo "YAD não encontrado. Por favor, instale usando: sudo apt install yad"
     exit 1
@@ -67,7 +69,7 @@ while true; do
         --field="Leitura Reversa (-R):CHK" FALSE \
         --field="Forçar Gravação (-f):CHK" TRUE \
         --field="Modo Verboso (-v):CHK" TRUE \
-        --button="yad-help:2" --button="yad-cancel:1" --button="Iniciar Resgate!system-run:0")
+        --button="Ajuda:2" --button="Cancelar:1" --button="Iniciar Resgate!system-run:0")
 
     XCODE=$?
 
@@ -111,7 +113,7 @@ CMD="$CMD -b $SECTOR -r $RETRIED $ORIGEM $DESTINO $MAPA"
 
 yad --title="KDu9-LifeSaver_UI v2.2 - CONFIRMAÇÃO" --image="dialog-error" \
     --text="<b>O utilitário KDu9-LifeSaver_UI vai disparar o comando nativo:</b>\n\n<span foreground='red'><b>$CMD</b></span>\n\nConfirme os alvos de escrita!" \
-    --button="yad-cancel:1" --button="Confirmar e Rodar!:0"
+    --button="Cancelar:1" --button="Confirmar e Rodar!:0"
 
 if [ $? -ne 0 ]; then exit 0; fi
 
@@ -122,7 +124,7 @@ if [ ! -f "$MAPA" ]; then
 fi
 
 # Definição das opções visuais para o xterm (Padrão RoyalBlue com Fonte Forte)
-X_OPTS="-bg #4169E1 -fg #FFFFFF -fn 9x15bold -geometry 100x30"
+X_OPTS="-bg #4169E1 -fg #FFFFFF -fn 9x15bold -geometry 80x30"
 
 # 1. Abre o xterm liberando o sub-shell para o ddrescue rodar solto no fundo
 if [ "$env" == "root" ] || [ "$USER" == "root" ]; then
